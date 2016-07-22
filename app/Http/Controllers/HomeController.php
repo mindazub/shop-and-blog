@@ -60,4 +60,11 @@ class HomeController extends Controller
 
         return view('pages.profile', compact('user'));
     }
+
+    public function product($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('pages.product', compact('product'));
+    }
 }

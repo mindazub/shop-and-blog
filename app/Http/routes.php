@@ -19,6 +19,13 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/products', 'HomeController@products');
+
+Route::get('/products/{id}', [
+	'as' => 'product.show',
+	'uses' => 'HomeController@product'
+	]);
+
+
 Route::get('/posts', 'HomeController@posts');
 
 Route::get('/posts/{id}',[
@@ -32,4 +39,10 @@ Route::get('/profile/{id}', [
 	'uses' => 'HomeController@profile'
 	]);
 
+
+Route::group(['middleware'=> ['web', 'auth'], 'prefix'=>'backend'], function()
+	{ Route::get('backend/dashboard', array(
+		'as'=>'dashboard', 
+		'uses'=>'BackendDashboardController@getDashboard')); 
+});
 
