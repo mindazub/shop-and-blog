@@ -15,11 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', 'AdminController@index');
+// Route::get('/admin', 'AdminController@index');
 Route::get('/admin', [
 	'as' => 'admin.show',
 	'uses' => 'AdminController@index'
 	])->middleware('auth');
+
+Route::any('/search',function(){
+    $q = Request::get ( 'q' );
+    $posts = \App\Post::where('title','LIKE','%'.$q.'%')->paginate(9);
+    if(count($posts) > 0)
+        return view('pages.posts')->withPosts($posts);
+    else 
+    	return view ('pages.posts')->withPosts($posts);
+});
 
 
 Route::auth();
@@ -58,3 +67,12 @@ Route::group(['middleware'=> ['web', 'auth'], 'prefix'=>'backend'], function()
 		'uses'=>'BackendDashboardController@getDashboard')); 
 });
 
+
+
+// Route::any('/search',function(){
+//     $q = Input::get ( 'q' );
+//     $user = User::where('name','LIKE','%'.$q.'%')->orWhere('email','LIKE','%'.$q.'%')->get();
+//     if(count($user) > 0)
+//         return view('welcome')->withDetails($user)->withQuery ( $q );
+//     else return view ('welcome')->withMessage('No Details found. Try to search again !');
+// });

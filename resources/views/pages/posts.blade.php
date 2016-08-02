@@ -3,6 +3,23 @@
 @section('content')
 
 	<div class="container">
+        
+
+    <div class="row">    
+        <div class="col-md-6 col-md-offset-2" style="margin: 20px;">
+            <form action="/search" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q"
+                        placeholder="Search Posts"> <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>    
 
         @forelse($posts as $post)
 
