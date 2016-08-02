@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+// use App\Http\Controllers\Auth\Request as Request;
+use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -69,4 +72,23 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Chooses where to redirect user after successful login
+     *
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    // protected function authenticated(App\Http\Controllers\Auth\Request $request, User $user)
+    protected function authenticated(Request $request, User $user)
+    {
+        if ($user->isAdmin) {
+            // return redirect()->to('/admin');
+            return redirect()->route('admin.show');
+        }
+
+        return redirect()->to('/');
+    }
+
 }

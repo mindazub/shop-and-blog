@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/admin', 'AdminController@index');
+Route::get('/admin', [
+	'as' => 'admin.show',
+	'uses' => 'AdminController@index'
+	]);
+
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
