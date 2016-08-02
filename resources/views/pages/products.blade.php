@@ -8,7 +8,8 @@
 	<div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <a href="{{ route('product.show', $product->id) }}">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <!-- <img src="http://placehold.it/320x150" alt=""> -->
+                            <img src="http://lorempixel.com/320/150/sports/{{ $product->id }} " alt=""></img>
                             </a>
                             <div class="caption">
                                 <h4 class="pull-right">${{ $product->price }}</h4>

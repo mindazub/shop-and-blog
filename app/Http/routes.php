@@ -15,14 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index');
 Route::get('/admin', [
 	'as' => 'admin.show',
 	'uses' => 'AdminController@index'
-	]);
+	])->middleware('auth');
 
 
 Route::auth();
+
+// Route::get('/admin', [
+// 	'as' => 'admin.show',
+// 	'uses' => 'AdminController@index'
+// 	])->middleware('admin');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/products', 'HomeController@products');
