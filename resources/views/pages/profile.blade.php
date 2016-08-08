@@ -61,7 +61,7 @@
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="{{ Auth::user()->email }}">{{ Auth::user()->email }}</a></td>
+                        <td><a href="{{ $user->email }}">{{ $user->email }}</a></td>
                       </tr>
                         <td>Phone Number</td>
                         <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)

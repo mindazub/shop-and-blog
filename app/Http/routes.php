@@ -21,6 +21,10 @@ Route::get('/admin', [
 	'uses' => 'AdminController@index'
 	])->middleware('auth');
 
+// SOURCE
+// http://justlaravel.com/search-functionality-laravel/
+// SOURCE
+
 Route::any('/search',function(){
     $q = Request::get ( 'q' );
     $posts = \App\Post::where('title','LIKE','%'.$q.'%')->paginate(9);
@@ -32,6 +36,11 @@ Route::any('/search',function(){
 
 
 Route::auth();
+
+Route::get('/auth/success', [
+    'as'   => 'auth.success',
+    'uses' => 'Auth\AuthController@success'
+]);
 
 // Route::get('/admin', [
 // 	'as' => 'admin.show',

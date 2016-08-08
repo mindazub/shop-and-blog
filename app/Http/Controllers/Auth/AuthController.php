@@ -91,4 +91,30 @@ class AuthController extends Controller
         return redirect()->to('/');
     }
 
+    public function success()
+    {
+        return view('success');
+    }
+
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param  \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
+    // public function register(Request $request)
+    // {
+    // $validator = $this->validator($request->all());
+
+    //     if ($validator->fails()) {
+    //         $this->throwValidationException(
+    //             $request, $validator
+    //     );
+    // }
+
+    // return redirect(route('auth.success')); // Change this route to your needs
+    // }
+
+
 }
