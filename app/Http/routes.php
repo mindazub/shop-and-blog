@@ -70,6 +70,11 @@ Route::get('/profile/{id}', [
 	]);
 
 
+Route::get('/profile/{id}/edit', [
+	'as' => 'profile.edit',
+	'uses' => 'HomeController@editProfile'
+	])->middleware('auth');
+
 Route::group(['middleware'=> ['web', 'auth'], 'prefix'=>'backend'], function()
 	{ Route::get('backend/dashboard', array(
 		'as'=>'dashboard', 
