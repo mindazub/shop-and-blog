@@ -61,8 +61,11 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="/uploads/avatars/{{ Auth::user()->avatart }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%" >
-                                {{ Auth::user()->name }} <span class="caret"></span>
+<!--                                 <img src="/uploads/avatars/{{ Auth::user()->avatart }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%" >
+ -->
+                                <img src="/uploads/avatars/hunterwalk5-e1320001548309-300x300.jpg" style="width: 32px; height: 32px; position: left; top: 10px; left: 10px; border-radius: 50%" >
+
+                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -78,10 +81,13 @@
     </nav>
 
     @yield('content')
-
+ 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+   
+    @yield('javascripts')
+
 </body>
 </html>

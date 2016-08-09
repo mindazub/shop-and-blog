@@ -8,6 +8,7 @@ use App\Product;
 use App\Post;
 use Auth;
 use App\User;
+use validator;
 
 class HomeController extends Controller
 {
@@ -58,13 +59,36 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         // dd($user->name);
 
-        return view('pages.profile', compact('user'));
+        return view('pages.profile.profile', compact('user'));
     }
 
 
     public function editProfile($id)
     {
-        return "Profile picture changed/added.";
+        $user = User::findOrFail($id);
+        // dd($user->name);
+
+        return view('pages.profile.profile-edit', compact('user'));
+    }
+
+    public function updateProfile($id, Request $request) {
+
+        $user = User::findOrFail($id);
+        
+        dd($id);
+
+        $rules = [
+            'email' => 'required|email',
+        ];
+
+        $validator = $request->all();
+
+        if($validator->fails()){
+            return 'failed';
+        }
+
+        return 'DONE.';
+
     }
 
     public function product($id)

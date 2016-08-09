@@ -75,6 +75,13 @@ Route::get('/profile/{id}/edit', [
 	'uses' => 'HomeController@editProfile'
 	])->middleware('auth');
 
+Route::post('/profile/{id}', [
+	'as' => 'profile.update',
+	'uses' => 'HomeController@updateProfile'
+	])->middleware('auth');
+
+
+
 Route::group(['middleware'=> ['web', 'auth'], 'prefix'=>'backend'], function()
 	{ Route::get('backend/dashboard', array(
 		'as'=>'dashboard', 
