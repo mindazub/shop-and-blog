@@ -16,7 +16,8 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">{{ $user->name }} | EDIT PROFILE&nbsp&nbsp<a href="#" class="btn btn-sm btn-success pull-right" style="color: white;"><!-- <i class="glyphicon glyphicon-ok"> -->OK</a></h3>
+            {!! Form::model($user, array('method' => 'PATCH', 'route' => array('profile.update', $user->id))) !!}
+              <h3 class="panel-title">{{ $user->name }} | EDIT PROFILE&nbsp&nbsp<button type="submit" class="btn btn-sm btn-success pull-right" style="color: white;"><!-- <i class="glyphicon glyphicon-ok"> -->OK</button></h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -66,14 +67,14 @@
                         <td>
                         <!-- <a href="{{ $user->email }}">{{ $user->email }}</a> -->
 
-{!! Form::model($user, array('method' => 'PATCH', 'route' => array('profile.update', $user->id))) !!}
+
 
   <div>
       {!! Form::text('email', null, ['class'=>'form-control']) !!}
   <br/><br/>
   <div>
 
-  <button type="submit" class="btn btn-success">Save Changes</button>
+  <!-- <button type="submit" class="btn btn-success">Save Changes</button> -->
 
 {!! Form::close() !!}
 
