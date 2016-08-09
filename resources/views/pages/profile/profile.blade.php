@@ -94,9 +94,9 @@
                                 <span class="glyphicon glyphicon-trash"></span> Delete
                             </button> -->
 
-                            <button class="btn btn-info" type="submit">
+                            <a class="btn btn-info" href="{{ route('profile.edit', $user->id) }}">
                                 <span class="glyphicon glyphicon-edit"></span> Edit
-                            </button>
+                            </a>
                             <button class="btn btn-danger" type="submit">
                                 <span class="glyphicon glyphicon-trash"></span> Delete
                             </button>

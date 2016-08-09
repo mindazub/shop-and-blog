@@ -8,7 +8,8 @@ use App\Product;
 use App\Post;
 use Auth;
 use App\User;
-use validator;
+use Validator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HomeController extends Controller
 {
@@ -48,6 +49,46 @@ class HomeController extends Controller
         return view('pages.post', compact('post'));
     }
 
+
+    public function editProfile($id)
+    {
+        // dd($id);
+
+        $user = User::where('id', $id)->first();
+
+
+        // dd($user->name);
+
+        return view('pages.profile.profile-edit', compact('user'));
+    }
+
+    public function updateProfile($id, Request $request) {
+
+        // dd($request);
+
+        $user = User::findOrFail($id);
+
+        // dd($id);
+
+        $rules = [
+            'email' => 'required|email',
+        ];
+
+         $validator = Validator::make($data = $request->all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        $user->email = $request->email;
+        $user->save();
+
+        // dd($user->email);
+
+        return view('pages.profile.profile', compact('user'));
+
+    }
+
+
     public function profile($id)
     {
         if(!Auth::user()) {            
@@ -63,33 +104,7 @@ class HomeController extends Controller
     }
 
 
-    public function editProfile($id)
-    {
-        $user = User::findOrFail($id);
-        // dd($user->name);
-
-        return view('pages.profile.profile-edit', compact('user'));
-    }
-
-    public function updateProfile($id, Request $request) {
-
-        $user = User::findOrFail($id);
-        
-        dd($id);
-
-        $rules = [
-            'email' => 'required|email',
-        ];
-
-        $validator = $request->all();
-
-        if($validator->fails()){
-            return 'failed';
-        }
-
-        return 'DONE.';
-
-    }
+    
 
     public function product($id)
     {

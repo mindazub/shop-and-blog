@@ -75,7 +75,8 @@ Route::get('/profile/{id}/edit', [
 	'uses' => 'HomeController@editProfile'
 	])->middleware('auth');
 
-Route::post('/profile/{id}', [
+
+Route::patch('/profile/{id}', [
 	'as' => 'profile.update',
 	'uses' => 'HomeController@updateProfile'
 	])->middleware('auth');
