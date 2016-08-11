@@ -59,6 +59,7 @@ Route::get('/products/{id}', [
 
 
 Route::get('/posts', 'HomeController@posts');
+Route::get('/forum', 'ForumController@index');
 
 Route::get('/posts/{id}',[
 	'as' => 'post.show',
@@ -75,7 +76,10 @@ Route::patch('/posts/{id}',[
 	'uses' => 'HomeController@updatePost'
 	]);
 
-
+Route::delete('/posts/{id}',[
+	'as' => 'post.destroy',
+	'uses' => 'HomeController@deletePost'
+	]);
 
 Route::get('/profile/{id}', [
 	'as' => 'profile.show',

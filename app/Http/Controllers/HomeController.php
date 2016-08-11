@@ -91,6 +91,15 @@ class HomeController extends Controller
 
     }
 
+    public function deletePost($id) {
+        $post = Post::where('id', $id)->first();
+
+        $post->delete();
+
+        // return view('pages.posts');
+        return redirect()->to('/posts');
+    }
+
 
 
     public function editProfile($id)

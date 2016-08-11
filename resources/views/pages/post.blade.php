@@ -12,7 +12,17 @@
                 <!-- Blog Post -->
                 <p>@if(Auth::user()->isAdmin)
                         <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-info">Edit</a>
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        <!-- <button type="submit" class="btn btn-sm btn-danger">Delete</button> -->
+                        <!-- <a href="{{ route('post.destroy', $post->id) }}" type="submit" class="btn btn-sm btn-danger">Delete</a> -->
+
+                         
+                        {!! Form::open(['route' => ['post.destroy', $post->id], 'class' => 'btn btn-sm btn-danger', 'method' => 'delete']) !!}
+                            {!! Form::submit('Delete') !!}
+                        {!! Form::close() !!}
+
+
+
+
                    @endif
                 </p>
                 <!-- Title -->

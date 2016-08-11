@@ -34,7 +34,17 @@
                 </p>
                 <p>@if(Auth::user()->isAdmin)
                         <button class="btn btn-sm btn-info">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        
+                        
+                         
+                        {!! Form::open(['route' => ['post.destroy', $post->id], 'class' => 'btn btn-sm btn-danger', 'method' => 'delete']) !!}
+                            {!! Form::submit('Delete') !!}
+                        {!! Form::close() !!}
+
+
+
+
+                        
                    @endif
                 </p>
 

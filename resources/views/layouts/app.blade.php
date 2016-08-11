@@ -51,6 +51,7 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/products') }}">Products</a></li>
                     <li><a href="{{ url('/posts') }}">Posts</a></li>
+                    <li><a href="{{ url('/forum') }}">Forum</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
