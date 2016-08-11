@@ -1,0 +1,4 @@
+ Pavadinimas yra "2016-08-11-10-24-19" 
+
+ <?xml version="1.0" encoding="UTF-8"?> 
+-<AgnumData CreatedOn="2016-08-11" CreatedByLogin="1" CreatedByApp="AGNUM 1.529" Version="12"> 

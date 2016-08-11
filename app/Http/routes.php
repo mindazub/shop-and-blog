@@ -29,7 +29,7 @@ Route::any('/search',function(){
     $q = Request::get ( 'q' );
     $posts = \App\Post::where('title','LIKE','%'.$q.'%')->paginate(9);
     if(count($posts) > 0)
-        return view('pages.posts')->withPosts($posts);
+        return view('pages.searchresults')->withPosts($posts)->with('q', $q);
     else 
     	return view ('pages.posts')->withPosts($posts);
 });

@@ -28,45 +28,26 @@
     <p></p>
     <p></p>
 
-
-    
+    <h1>Search results: <i style="font-size: 25px;">{!! $q !!}</i></h1>
+    <p style="margin-bottom: 50px;"></p>
         @forelse($posts as $post)
 
          
-                <h1><a href="{{ route('post.show', $post->id) }}" style="color: #8e44ad;">{{ $post->title }}</a></h1>
+                <h1>{{ $post->title }}</h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="{{ route('profile.show', $post->user->id) }}" style="color: #d35400; font-weight: bold;">{{ $post->user->name }}</a>
+                    by <a href="{{ route('profile.show', $post->user->id) }}">{{ $post->user->name }}</a>
                     &nbsp&nbsp
+                    <!-- <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM -->
                     <span class="glyphicon glyphicon-time"></span> 
                     Posted on {{ $post->created_at->format('F j, Y \a\t\  g:i A') }}
                 </p>
-                <!-- <p>@if(Auth::user()->isAdmin)
-                        <button class="btn-default">Edit</button>
-                        
-                         
-                        {!! Form::open(['route' => ['post.destroy', $post->id],  'method' => 'delete']) !!}
-                            {!! Form::submit('Delete') !!}
-                        {!! Form::close() !!}
-
-
-                   @endif
-                </p> -->
-
-                <!-- <hr> -->
-
-                <!-- Date/Time -->
-                <!-- <p></p>                 -->
-
-                <!-- Preview Image -->
-                <!-- <img class="img-responsive" src="http://placehold.it/900x300" alt=""> -->
 
                 <hr>
 
                 <!-- Post Content -->
                 <p class="lead">{{ $post->excerpt }}&nbsp&nbsp&nbsp <a href="{{ route('post.show', $post->id) }}">Read more</a></p> 
-                
 
                 <hr><hr><hr>
   

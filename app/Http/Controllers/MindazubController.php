@@ -9,7 +9,44 @@ use \DateTime;
 
 class MindazubController extends Controller
 {
-    public function index()
+    public function index(){
+
+    	$countOfOrders = 10;
+    	// for ($i=0; $i < $countOfOrders; $i++) { 
+    	// 	echo ' == '.$i . '==';
+    	// }
+
+for ($i=0; $i < $countOfOrders; $i++) { 
+
+$date=new DateTime(); //this returns the current date time
+$result = $date->format('Y-m-d-H-i-s');
+$result1 = $date->format('Y-m-d');
+$fileName = "ESHOP_" .$result . ".txt"; 
+
+$myfile = fopen($fileName, "w") or die("Unable to open file!");
+
+$failoInformacija =
+        ' Pavadinimas yra "'. $result .'" ' . "\r\n\r\n" .
+        ' <?xml version="1.0" encoding="UTF-8"?> ' . "\r\n" .
+        '-<AgnumData CreatedOn="' . $result1 .'" CreatedByLogin="1" CreatedByApp="AGNUM 1.529" Version="12"> ' . "\r\n" ;
+
+fwrite($myfile, $failoInformacija);
+fclose($myfile);
+
+	echo "Failo pavadinimas: " . $fileName . "\r\n\r\n sukurtas <br>";
+
+sleep(5);
+
+
+}
+
+
+    }
+
+
+
+
+    public function failoEksporttas()
     {
     	$date=new DateTime(); //this returns the current date time
 $result = $date->format('Y-m-d-H-i-s');

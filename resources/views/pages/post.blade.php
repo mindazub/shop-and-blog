@@ -46,7 +46,8 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">{{ nl2br($post->body) }}</p>
+                <p class="lead">{{ nl2br($post->excerpt) }}</p>
+                <p >{{ nl2br($post->body) }}</p>
 
                 <hr>
 
