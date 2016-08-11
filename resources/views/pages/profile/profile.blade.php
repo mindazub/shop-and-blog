@@ -67,8 +67,15 @@
                         <td>Phone Number</td>
                         <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
                         </td>
-                           
                       </tr>
+                      @if($user->isAdmin)
+                      <tr>
+                        <td>Level</td>
+                        <td>
+                            <span class="glyphicon glyphicon-star"></span> ADMIN
+                        </td>
+                      </tr>
+                      @endif
                      
                     </tbody>
                   </table>

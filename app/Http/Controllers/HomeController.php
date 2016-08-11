@@ -49,6 +49,49 @@ class HomeController extends Controller
         return view('pages.post', compact('post'));
     }
 
+    public function editPost($id)
+    {
+        // dd($id);
+
+        $post = Post::where('id', $id)->first();
+
+
+        // dd($user->name);
+
+        return view('pages.posts.postEdit', compact('post'));
+    }
+
+    public function updatePost($id, Request $request) {
+
+        // dd($request);
+
+        $post = Post::where('id', $id)->first();
+        // dd($id);
+
+        $rules = [
+            'title' => 'required',
+            'excerpt' => 'required',
+            'body' => 'required',
+        ];
+
+         $validator = Validator::make($data = $request->all(), $rules);
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->save();
+
+        // dd($user->email);
+
+        return view('pages.post', compact('post'));
+
+    }
+
+
 
     public function editProfile($id)
     {

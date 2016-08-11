@@ -32,6 +32,11 @@
                     &nbsp&nbsp
                     <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
                 </p>
+                <p>@if(Auth::user()->isAdmin)
+                        <button class="btn btn-sm btn-info">Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                   @endif
+                </p>
 
                 <!-- <hr> -->
 

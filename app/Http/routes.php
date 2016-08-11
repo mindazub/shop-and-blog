@@ -37,6 +37,8 @@ Route::any('/search',function(){
 
 Route::auth();
 
+Route::get('/mindazub', 'MindazubController@index');
+
 Route::get('/auth/success', [
     'as'   => 'auth.success',
     'uses' => 'Auth\AuthController@success'
@@ -62,6 +64,17 @@ Route::get('/posts/{id}',[
 	'as' => 'post.show',
 	'uses' => 'HomeController@post'
 	]);
+
+Route::get('/posts/{id}/edit',[
+	'as' => 'post.edit',
+	'uses' => 'HomeController@editPost'
+	]);
+
+Route::patch('/posts/{id}',[
+	'as' => 'post.update',
+	'uses' => 'HomeController@updatePost'
+	]);
+
 
 
 Route::get('/profile/{id}', [
