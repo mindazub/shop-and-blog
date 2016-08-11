@@ -17,7 +17,7 @@
 
                          
                         {!! Form::open(['route' => ['post.destroy', $post->id], 'class' => 'btn btn-sm btn-danger', 'method' => 'delete']) !!}
-                            {!! Form::submit('Delete') !!}
+                            {{Form::button('<i class="glyphicon glyphicon-delete">Delete</i>', array('type' => 'submit', 'class' => 'btn btn-sm btn-danger'))}}
                         {!! Form::close() !!}
 
 
@@ -36,7 +36,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at->format('F j, Y \a\t\  g:i A') }}</p>
 
                 <hr>
 
@@ -46,7 +46,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">{{ $post->body }}</p>
+                <p class="lead">{{ nl2br($post->body) }}</p>
 
                 <hr>
 

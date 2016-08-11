@@ -61,6 +61,17 @@ Route::get('/products/{id}', [
 Route::get('/posts', 'HomeController@posts');
 Route::get('/forum', 'ForumController@index');
 
+
+Route::get('/posts/add',[
+	'as' => 'posts.add',
+	'uses' => 'HomeController@addPost'
+	]);
+
+Route::post('/posts',[
+	'as' => 'posts.store',
+	'uses' => 'HomeController@storePost'
+	]);
+
 Route::get('/posts/{id}',[
 	'as' => 'post.show',
 	'uses' => 'HomeController@post'

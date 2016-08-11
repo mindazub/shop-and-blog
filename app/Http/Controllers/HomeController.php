@@ -42,6 +42,34 @@ class HomeController extends Controller
 
         return view('pages.posts', compact('posts'));
     }
+
+    public function addPost()
+    {
+
+        return view('pages.posts.new');
+    }
+
+    public function storePost(Request $request)
+    {
+
+        $rules = [
+        'title' => 'required',
+        'excerpt' => 'required',
+        'body' => 'required'
+        ];
+
+        $data = $request->all(); 
+        
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        Post::create($data)->save();
+
+        return redirect()->to('/posts');
+    }
+
     public function post($id)
     {
         $post = Post::findOrFail($id);
