@@ -6,7 +6,7 @@
         
 
     <div class="row">    
-        <div class="col-md-6 col-md-offset-2" style="margin: 20px;">
+        <div class="col-md-6 col-md-offset-3">
             <form action="/search" method="POST" role="search">
                 {{ csrf_field() }}
                 <div class="input-group">
