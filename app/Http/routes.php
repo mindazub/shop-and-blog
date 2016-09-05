@@ -51,6 +51,7 @@ Route::get('/auth/success', [
 
 Route::get('/home', 'HomeController@index');
 Route::get('/products', 'HomeController@products');
+Route::get('/products2', 'HomeController@products2');
 
 Route::get('/products/{id}', [
 	'as' => 'product.show',

@@ -36,6 +36,14 @@ class HomeController extends Controller
         return view('pages.products', compact('products'));
     }
 
+    public function products2()
+    {
+        $products= Product::paginate(9);
+
+        // return view('pages.products', ['products' => $products]);
+        return view('pages.products2', compact('products'));
+    }
+
     public function posts()
     {
         $posts = Post::paginate(10);
